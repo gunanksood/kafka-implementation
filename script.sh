@@ -6,8 +6,8 @@ docker run -d \
     confluentinc/cp-zookeeper:3.1.1
 
 docker run -d \
-    --net=host \
     --name=kafka \
+    -p 29092:29092 \
     -e KAFKA_ZOOKEEPER_CONNECT=localhost:32181 \
     -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:29092 \
     confluentinc/cp-kafka:3.1.1
