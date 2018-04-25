@@ -50,7 +50,7 @@ p = Producer({'bootstrap.servers': address})
 
 
 try:
-    for val in xrange(1, 10000):
+    for val in xrange(1, 100):
         p.produce('mytopic', 'myvalue #{0}'
                   .format(random.randint(1, 1000000)), callback=acked)
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo docker run -d \
+docker run -d \
     --net=host \
     --name=zookeeper \
     -e ZOOKEEPER_CLIENT_PORT=32181 \
@@ -12,7 +12,7 @@ docker run -d \
     -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:29092 \
     confluentinc/cp-kafka:3.1.1
 
-python consume_example.py localhost 29092
+
 python produce_example.py localhost 29092
 python produce_example_2.py localhost 29092
 python produce_example_3.py localhost 29092
