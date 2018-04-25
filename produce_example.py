@@ -22,12 +22,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument("ip", help="IP address")
 parser.add_argument("port", help="Port no.")
 args = parser.parse_args()
-print args.ip
-print args.port
 
 address = "" + args.ip + ":" + args.port
-print address
-p = Producer({'bootstrap.servers': 'localhost:29092'})
+p = Producer({'bootstrap.servers': address})
 
 try:
     for val in xrange(1, 10000):

@@ -1,7 +1,15 @@
 from confluent_kafka import Consumer, KafkaError
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("ip", help="IP address")
+parser.add_argument("port", help="Port no.")
+args = parser.parse_args()
+
+address = "" + args.ip + ":" + args.port
 
 settings = {
-    'bootstrap.servers': 'localhost:9092',
+    'bootstrap.servers': address,
     'group.id': 'mygroup',
     'client.id': 'client-1',
     'enable.auto.commit': True,

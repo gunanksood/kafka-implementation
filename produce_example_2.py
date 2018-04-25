@@ -29,6 +29,7 @@
 # p.flush(30)
 from confluent_kafka import Producer
 import random
+import argparse
 
 
 def acked(err, msg):
@@ -39,7 +40,14 @@ def acked(err, msg):
         print("Message produced: {0}".format(msg.value()))
 
 
-p = Producer({'bootstrap.servers': 'localhost:29092'})
+parser = argparse.ArgumentParser()
+parser.add_argument("ip", help="IP address")
+parser.add_argument("port", help="Port no.")
+args = parser.parse_args()
+
+address = "" + args.ip + ":" + args.port
+p = Producer({'bootstrap.servers': address})
+
 
 try:
     for val in xrange(1, 10000):
